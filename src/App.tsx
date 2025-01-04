@@ -1,4 +1,5 @@
 import "./App.css";
+import AddressForm from "./components/Address-form";
 import Cta from "./components/Cta";
 import Hero from "./components/Hero";
 import UserForm from "./components/User-form";
@@ -11,6 +12,7 @@ function App() {
       </section>
       <Cta />
       <UserForm />
+      <AddressForm />
     </main>
   );
 }
