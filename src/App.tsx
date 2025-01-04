@@ -1,6 +1,7 @@
 import "./App.css";
 import Cta from "./components/Cta";
 import Hero from "./components/Hero";
+import UserForm from "./components/User-form";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Hero />
       </section>
       <Cta />
+      <UserForm />
     </main>
   );
 }
