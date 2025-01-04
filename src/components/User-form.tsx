@@ -1,3 +1,4 @@
+import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
@@ -15,11 +16,11 @@ export default function UserForm() {
         </div>
       </div>
       <div>
-        <div>
-          <Label htmlFor="phone">Phone Number</Label>
-          <Input type="number" placeholder="enter your phone number" />
-        </div>
+        <Label htmlFor="phone">Phone Number</Label>
+        <Input type="number" placeholder="enter your phone number" />
       </div>
+
+      <Button>Next</Button>
     </section>
   );
 }
