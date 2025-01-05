@@ -3,8 +3,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { z } from "zod";
-import { phoneRegex } from "@/lib/regEx";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { phoneRegex } from "@/lib/regex";
 
 export default function UserForm() {
   const formSchema = z.object({
