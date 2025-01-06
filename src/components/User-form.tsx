@@ -6,9 +6,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { phoneRegex } from "@/lib/regex";
 import { useUserContext } from "@/hooks/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function UserForm() {
-  const { setUser, setStep } = useUserContext();
+  const { setUser } = useUserContext();
+  const navigate = useNavigate();
 
   const formSchema = z.object({
     name: z.string().min(2, { message: "should have more than 2 chars" }),
@@ -31,7 +33,7 @@ export default function UserForm() {
   }
 
   function handleNext() {
-    setStep((p) => p + 1);
+    navigate("/address-form");
   }
 
   return (

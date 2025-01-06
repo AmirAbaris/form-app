@@ -17,10 +17,8 @@ export interface Address {
 export interface UserContextType {
   user: User | undefined;
   address?: Address | undefined;
-  step: number;
   setUser: Dispatch<SetStateAction<User | undefined>>;
   setAddress: Dispatch<SetStateAction<Address | undefined>>;
-  setStep: Dispatch<SetStateAction<number>>;
 }
 
 export const UserContext = createContext<UserContextType | undefined>(

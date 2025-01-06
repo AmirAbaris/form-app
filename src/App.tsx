@@ -1,15 +1,38 @@
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import Cta from "./components/Cta";
-import Hero from "./components/Hero";
+import Landing from "./pages/LandingPage";
+import SummaryPage from "./pages/SummaryPage";
+import UserFormPage from "./pages/UserFormPage";
+import AddressFormPage from "./pages/AddressFormPage";
+import { UserContextProvider } from "./context/UserContextProvider";
+import ProtectedRoute from "./protected-routes";
 
 function App() {
   return (
-    <main className="space-y-24">
-      <section className="container mx-auto px-12 py-12 space-y-12">
-        <Hero />
-      </section>
-      <Cta />
-    </main>
+    <UserContextProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/user-form" element={<UserFormPage />} />
+          <Route
+            path="/address-form"
+            element={
+              <ProtectedRoute>
+                <AddressFormPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/summary"
+            element={
+              <ProtectedRoute>
+                <SummaryPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </UserContextProvider>
   );
 }
 
