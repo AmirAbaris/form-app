@@ -13,7 +13,7 @@ export default function SummaryPage() {
   }
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="container min-h-screen mx-auto p-12 space-y-8">
       <h1 className="text-2xl font-bold text-center">Summary</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <SummaryItem
