@@ -5,9 +5,12 @@ import { Label } from "./ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUserContext } from "@/hooks/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AddressForm() {
-  const { setAddress, setStep } = useUserContext();
+  const { setAddress } = useUserContext();
+  const navigate = useNavigate();
+
   const formSchema = z.object({
     firstAddress: z
       .string()
@@ -34,11 +37,11 @@ export default function AddressForm() {
   }
 
   function handleNext() {
-    setStep((prev) => prev + 1);
+    navigate("/summary");
   }
 
   function handleBack() {
-    setStep((prev) => prev - 1);
+    navigate("/user-form");
   }
 
   return (
