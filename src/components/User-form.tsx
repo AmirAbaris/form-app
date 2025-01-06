@@ -3,10 +3,13 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { z } from "zod";
-import { phoneRegex } from "@/lib/regEx";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { phoneRegex } from "@/lib/regex";
+import { useUserContext } from "@/hooks/useUserContext";
 
 export default function UserForm() {
+  const { setUser, setStep } = useUserContext();
+
   const formSchema = z.object({
     name: z.string().min(2, { message: "should have more than 2 chars" }),
     email: z.string().email({ message: "enter valid email address" }),
@@ -22,7 +25,13 @@ export default function UserForm() {
   });
 
   function submitForm(data: z.infer<typeof formSchema>) {
+    setUser(data);
+    handleNext();
     console.log(data);
+  }
+
+  function handleNext() {
+    setStep((p) => p + 1);
   }
 
   return (

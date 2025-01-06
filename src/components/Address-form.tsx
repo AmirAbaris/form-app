@@ -4,8 +4,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useUserContext } from "@/hooks/useUserContext";
 
 export default function AddressForm() {
+  const { setAddress, setStep } = useUserContext();
   const formSchema = z.object({
     firstAddress: z
       .string()
@@ -26,7 +28,17 @@ export default function AddressForm() {
   });
 
   function submitForm(data: z.infer<typeof formSchema>) {
+    setAddress(data);
+    handleNext();
     console.log(data);
+  }
+
+  function handleNext() {
+    setStep((prev) => prev + 1);
+  }
+
+  function handleBack() {
+    setStep((prev) => prev - 1);
   }
 
   return (
@@ -82,10 +94,10 @@ export default function AddressForm() {
         </div>
       </div>
       <div className="flex gap-x-2">
-        <Button type="submit" variant="outline">
+        <Button onClick={handleBack} variant="outline">
           Back
         </Button>
-        <Button>Next</Button>
+        <Button type="submit">Next</Button>
       </div>
     </form>
   );
